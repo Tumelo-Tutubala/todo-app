@@ -19,11 +19,27 @@ export default function App() {
     setTodos([...todos, newTodo]); // copy the old list, add the new one
     setText("");                   // clear the input
   }
+
+  function deleteTodo(id) {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  }
+
+  function toggleTodo(id) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, completed: !todo.completed };
+        }
+        return todo;
+      })
+    );
+  }
   return (
     <div className="App">
 
       <TodoForm text={text} setText={setText} addTodo={addTodo} />
-      <TodoList todos={todos} />
+      <TodoList todos={todos}  />
+  
     </div>
 
   );
