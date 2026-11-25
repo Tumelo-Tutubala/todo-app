@@ -1,6 +1,8 @@
-export default function TodoItem(){
+export default function TodoItem({todo}){
 
     return (
-        <div className="TodoItem"></div>
+        <div className="TodoItem">
+            <p>{todo.text}</p>
+        </div>
     );
 }
