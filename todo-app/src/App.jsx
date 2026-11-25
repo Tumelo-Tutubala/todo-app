@@ -10,7 +10,7 @@ export default function App() {
     const saved = localStorage.getItem("todos");
     return saved ? JSON.parse(saved) : [];
   });
-  
+
   const [text, setText] = useState("");
   const [filter, setFilter] = useState("all");
 
@@ -45,6 +45,16 @@ export default function App() {
       })
     );
   }
+  function editTodo(id, newText) {
+    setTodos(
+      todos.map((todo) => {
+        if (todo.id === id) {
+          return { ...todo, text: newText };
+        }
+        return todo;
+      })
+    );
+  }
 
   const visibleTodos = todos.filter((todo) => {
     if (filter === "active") return !todo.completed;
@@ -60,6 +70,7 @@ export default function App() {
         todos={visibleTodos}
         toggleTodo={toggleTodo}
         deleteTodo={deleteTodo}
+        editTodo={editTodo}
       />  
      
     </div>
