@@ -1,1 +1,116 @@
 
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: system-ui, sans-serif;
+    min-height: 100vh;
+    background: #f0f4f8;
+    color: #1a202c;
+}
+
+.App {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+.completed {
+    text-decoration: line-through;
+    color: #888;
+}
+
+h1{
+    text-align: center;
+    margin: 10px;
+}
+.TodoItem span {
+    overflow-wrap: anywhere;
+}
+
+.TodoItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.75rem;
+    background: #fff;
+        border-radius: 12px;
+        padding: 0.75rem 1rem;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        margin: 5px;
+    
+}
+
+.TodoItem label {
+    flex: 1;
+    min-width: 0;
+    /* without this, flex items refuse to shrink below their content */
+}
+
+.TodoItem button {
+    flex-shrink: 0;
+}
+
+.TodoItem input[type="text"],
+.TodoItem input:not([type]) {
+    flex: 1;
+    min-width: 0;
+}
+
+
+.TodoItem {
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+
+.TodoItem:hover {
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+    transform: translateY(-2px);
+}
+.TodoForm{
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    display: flex;
+    gap: 4px;
+    margin-bottom: 10px;
+}
+
+.TodoForm button ,input{
+    padding: 10px;
+    border-radius: 4px;
+
+}
+
+.TodoForm input:focus{
+    box-shadow: 0 2px 6px lightslategrey;
+}
+
+.FilterButtons button{
+    margin: 2px;
+    padding: 2px;
+    border-radius: 5px;
+}
+
+
+.FilterButtons button:hover{
+    background-color: lightcyan;
+    color: grey;
+    box-shadow: 0 2px 6px lightslategrey;
+    padding:2.5px;
+
+}
+
+.TodoItem .delete{
+    background-color: red;
+    color: white;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+.TodoItem button{
+    border-radius: 5px;
+        padding: 2.5px;
+}

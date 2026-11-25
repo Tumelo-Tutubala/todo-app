@@ -35,15 +35,14 @@ export default function TodoItem({ todo, toggleTodo, deleteTodo, editTodo }) {
                             onChange={() => toggleTodo(todo.id)}
                         />
                         <span
-                            style={{
-                                textDecoration: todo.completed ? "line-through" : "none",
-                            }}
-                        >
+                            className={
+                                todo.completed ? "completed" : "none"
+                            }>
                             {todo.text}
                         </span>
                     </label>
                     <button onClick={() => setIsEditing(true)}>Edit</button>
-                    <button onClick={() => deleteTodo(todo.id)}>Delete</button>
+                    <button className="delete" onClick={() => deleteTodo(todo.id)}>Delete</button>
                 </>
             )}
         </div>

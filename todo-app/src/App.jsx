@@ -64,6 +64,8 @@ export default function App() {
   return (
     <div className="App">
 
+      <h1>ToDo App</h1>
+
       <TodoForm text={text} setText={setText} addTodo={addTodo} />
       <FilterButtons filter={filter} setFilter={setFilter} />
       <TodoList
