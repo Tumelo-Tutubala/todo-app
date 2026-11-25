@@ -1,4 +1,4 @@
-
+/* ---------- Base ---------- */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -18,50 +18,90 @@ body {
     padding: 2rem 1rem;
 }
 
-.completed {
-    text-decoration: line-through;
-    color: #888;
-}
-
-h1{
+h1 {
     text-align: center;
-    margin: 10px;
-}
-.TodoItem span {
-    overflow-wrap: anywhere;
+    margin-bottom: 1.5rem;
 }
 
+/* ---------- Form ---------- */
+.TodoForm {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.TodoForm input {
+    flex: 1;
+    min-width: 0;
+    min-height: 52px;
+    padding: 0.75rem 1rem;
+    border: 2px solid #cbd5e0;
+    border-radius: 12px;
+    font-size: 1.1rem;
+    outline: none;
+}
+
+.TodoForm input:focus {
+    border-color: #3182ce;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.3);
+}
+
+.TodoForm button {
+    min-height: 52px;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 12px;
+    background: #3182ce;
+    color: #fff;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.TodoForm button:hover {
+    background: #2b6cb0;
+}
+
+/* ---------- Filter buttons ---------- */
+.FilterButtons {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.FilterButtons button {
+    flex: 1;
+    padding: 0.6rem 1rem;
+    border: 2px solid #cbd5e0;
+    border-radius: 10px;
+    background: #fff;
+    color: #4a5568;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.FilterButtons button:hover {
+    background: #edf2f7;
+}
+
+.FilterButtons button.active {
+    background: #3182ce;
+    border-color: #3182ce;
+    color: #fff;
+}
+
+/* ---------- Task list ---------- */
 .TodoItem {
     display: flex;
     justify-content: space-between;
     align-items: center;
     gap: 0.75rem;
     background: #fff;
-        border-radius: 12px;
-        padding: 0.75rem 1rem;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        margin: 5px;
-    
-}
-
-.TodoItem label {
-    flex: 1;
-    min-width: 0;
-    /* without this, flex items refuse to shrink below their content */
-}
-
-.TodoItem button {
-    flex-shrink: 0;
-}
-
-.TodoItem input[type="text"],
-.TodoItem input:not([type]) {
-    flex: 1;
-    min-width: 0;
-}
-
-
-.TodoItem {
+    border-radius: 12px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
     transition: box-shadow 0.2s, transform 0.2s;
 }
 
@@ -69,48 +109,110 @@ h1{
     box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
     transform: translateY(-2px);
 }
-.TodoForm{
-    justify-content: center;
-    align-items: center;
-    justify-items: center;
+
+.TodoItem label {
+    flex: 1;
+    min-width: 0;
+    /* lets long text shrink and wrap */
     display: flex;
-    gap: 4px;
-    margin-bottom: 10px;
+    align-items: flex-start;
+    gap: 0.6rem;
+    cursor: pointer;
 }
 
-.TodoForm button ,input{
-    padding: 10px;
-    border-radius: 4px;
-
+.TodoItem input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    margin-top: 2px;
+    flex-shrink: 0;
+    cursor: pointer;
 }
 
-.TodoForm input:focus{
-    box-shadow: 0 2px 6px lightslategrey;
+.TodoItem span {
+    overflow-wrap: anywhere;
+    font-size: 1.05rem;
 }
 
-.FilterButtons button{
-    margin: 2px;
-    padding: 2px;
-    border-radius: 5px;
+.TodoItem .completed {
+    text-decoration: line-through;
+    color: #a0aec0;
 }
 
-
-.FilterButtons button:hover{
-    background-color: lightcyan;
-    color: grey;
-    box-shadow: 0 2px 6px lightslategrey;
-    padding:2.5px;
-
+/* edit mode input */
+.TodoItem input:not([type]) {
+    flex: 1;
+    min-width: 0;
+    padding: 0.5rem 0.75rem;
+    border: 2px solid #cbd5e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    outline: none;
 }
 
-.TodoItem .delete{
-    background-color: red;
-    color: white;
-    border-radius: 5px;
-    padding: 2px;
+.TodoItem input:not([type]):focus {
+    border-color: #3182ce;
 }
 
-.TodoItem button{
-    border-radius: 5px;
-        padding: 2.5px;
+/* task buttons */
+.TodoItem button {
+    flex-shrink: 0;
+    padding: 0.45rem 0.8rem;
+    border: none;
+    border-radius: 8px;
+    background: #edf2f7;
+    color: #2d3748;
+    font-size: 0.9rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.TodoItem button:hover {
+    background: #e2e8f0;
+}
+
+.TodoItem button:last-child {
+    background: #fed7d7;
+    color: #9b2c2c;
+}
+
+.TodoItem button:last-child:hover {
+    background: #feb2b2;
+}
+
+/* empty state */
+.empty {
+    text-align: center;
+    color: #718096;
+    padding: 2rem 0;
+}
+
+/* ---------- Keyboard focus ---------- */
+button:focus-visible,
+input[type="checkbox"]:focus-visible {
+    outline: 3px solid rgba(49, 130, 206, 0.6);
+    outline-offset: 2px;
+}
+
+/* ---------- Phones ---------- */
+@media (max-width: 480px) {
+    .App {
+        padding: 1rem 0.75rem;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .TodoForm {
+        flex-direction: column;
+    }
+
+    .TodoForm input,
+    .TodoForm button {
+        width: 100%;
+    }
+
+    .TodoItem {
+        flex-wrap: wrap;
+    }
 }
