@@ -2,7 +2,7 @@
 
 A todo app built with React. Add tasks, tick them off, edit or delete them, and filter by status. Your tasks are saved in the browser, so they're still there after a refresh.
 
-**Live demo:** [add link after deploying]
+**Live demo:** [https://todo-app-alphatech.vercel.app/]
 
 
 
