@@ -3,10 +3,13 @@ import TodoList from "./components/TodoList"
 import TodoItem from "./components/TodoItem"
 
 import { useEffect, useState } from "react"
+import FilterButtons from "./components/FilterButtons";
 
 export default function App() {
   const [todos, setTodos] = useState([]);
   const [text, setText] = useState("");
+  const [filter, setFilter] = useState("all");
+
   function addTodo() {
     if (!text.trim()) return; // stop if the input is empty
 
@@ -34,12 +37,23 @@ export default function App() {
       })
     );
   }
+
+  const visibleTodos = todos.filter((todo) => {
+    if (filter === "active") return !todo.completed;
+    if (filter === "done") return todo.completed;
+    return true; // "all"
+  });
   return (
     <div className="App">
 
       <TodoForm text={text} setText={setText} addTodo={addTodo} />
-      <TodoList todos={todos}  />
-  
+      <FilterButtons filter={filter} setFilter={setFilter} />
+      <TodoList
+        todos={visibleTodos}
+        toggleTodo={toggleTodo}
+        deleteTodo={deleteTodo}
+      />  
+     
     </div>
 
   );
