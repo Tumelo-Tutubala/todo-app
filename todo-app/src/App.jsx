@@ -6,9 +6,17 @@ import { useEffect, useState } from "react"
 import FilterButtons from "./components/FilterButtons";
 
 export default function App() {
-  const [todos, setTodos] = useState([]);
+  const [todos, setTodos] = useState(() => {
+    const saved = localStorage.getItem("todos");
+    return saved ? JSON.parse(saved) : [];
+  });
+  
   const [text, setText] = useState("");
   const [filter, setFilter] = useState("all");
+
+  useEffect(() => {
+    localStorage.setItem("todos", JSON.stringify(todos));
+  }, [todos]);
 
   function addTodo() {
     if (!text.trim()) return; // stop if the input is empty
