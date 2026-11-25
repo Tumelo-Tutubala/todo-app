@@ -1,19 +1,35 @@
-# React + Vite
+# Todo App
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A todo app built with React. Add tasks, tick them off, edit or delete them, and filter by status. Your tasks are saved in the browser, so they're still there after a refresh.
 
-Currently, two official plugins are available:
+**Live demo:** [add link after deploying]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
 
-## React Compiler
 
-The React Compiler is enabled on this template. See [this documentation](https://react.dev/learn/react-compiler) for more information.
+## Features
 
-Note: This will impact Vite dev & build performances.
-You can also try [the experimental native React Compiler support in plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md#rust-react-compiler) by using `compiler: true` in the plugin options instead of using the Babel plugin.
+- Add, edit and delete tasks
+- Mark tasks as done
+- Filter by All, Active or Done
+- Tasks saved with localStorage
+- Empty-state message
+- Responsive design for phone, tablet and desktop
 
-## Expanding the ESLint configuration
+## Built with
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- React
+- Vite
+- CSS (flexbox and media queries)
+
+## Run it locally
+
+```bash
+git clone https://github.com/Tumelo-Tutubala/todo-app.git
+cd todo-app
+npm install
+npm run dev
+```
+
+## What I learned
+
+- [keeping state in App and passing it down with props, updating arrays without changing them (filter, map, spread), saving state with useEffect and localStorage]
